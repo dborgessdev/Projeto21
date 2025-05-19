@@ -1,46 +1,61 @@
-Visão Geral
-O Projeto 21 monitora a qualidade do ar em áreas urbanas, analisando NO₂, CO₂ e PM₁₀ por zona (sigla de estado) e horário, exibindo alertas e gráficos ASCII e sugerindo ações mitigatórias.
+Projeto 21
+Sistema de Monitoramento de Qualidade do Ar em Áreas Urbanas
 
-1. Objetivos e Escopo
-Problema: Emissões de veículos e indústrias elevam poluentes na cidade.
+Um utilitário de linha de comando em C para capturar e analisar dados de poluentes (NO₂, CO₂, PM₁₀) por região e horário, exibindo alertas, gráficos ASCII e sugestões de ação.
 
-Solução: Ferramenta CLI em C para:
+1. 🔭 Objetivos e Escopo
+Problema
+Emissões de veículos e indústrias elevam os níveis de poluentes em áreas urbanas, afetando a saúde pública.
 
-Capturar sigla de estado (2 caracteres) e hora (0–23).
+Solução
+Ferramenta em C que:
 
-Ler valores de PM₁₀, NO₂ e CO₂ (floats ≥ 0).
+• Coleta dados sobre poluentes atmosféricos (NO₂, CO₂, PM10) 
+    Captura sigla de estado (2 letras) e hora da coleta (0–23).
+    Lê valores de PM₁₀, NO₂ e CO₂ (floats ≥ 0).
+• Analisa os dados por zonas geográficas e horários 
+    Classifica níveis como Normal, Alerta Amarelo ou Alerta Vermelho.
+• Exibe gráficos e alertas de poluição
+    Gera gráficos de barras ASCII proporcionais.
+• Propõe ações para a melhoria da qualidade do ar 
+    Sugere medidas mitigatórias (transporte limpo, mais áreas verdes etc.).
 
-Classificar níveis (normal/amarelo/vermelho) e gerar gráficos de barras.
 
-Propor medidas como incentivo ao transporte limpo e expansão de áreas verdes.
+2. ⚙️ Especificações Funcionais
+  Entrada de dados
 
-2. Especificações Funcionais
-Entrada: scanf para sigla, hora e três floats; validação com while.
+  scanf para sigla do estado, hora e três valores float.
 
-Decisão: switch para sigla; if/else para alertas.
+  Validação de formato via while.
 
-Gráficos: laço while para desenhar até 30 blocos proporcionalmente.
+  Decisões
 
-Loop geral: do…while que repete a análise se o usuário confirmar.
+  switch + while para validar sigla de estado.
 
-3. Requisitos Não Funcionais
-Portabilidade: C padrão, compila em Linux/Windows.
+  if/else para definir alertas de cada poluente.
 
-Simplicidade: único ponto de entrada (main()), sem dependências.
+  Gráficos ASCII
 
-Extensibilidade: pronto para WebAssembly/CGI em futura versão.
+  Laço while para desenhar até 30 blocos (#) proporcionalmente ao valor máximo.
 
-4. Estrutura de Pastas
-bash
-Copiar
-Editar
+  Fluxo geral
+
+  do…while permite repetir toda a análise conforme resposta do usuário.
+
+3. 📋 Requisitos Não Funcionais
+
+Simplicidade: Único ponto de entrada (main()), sem dependências externas.
+
+4. 📂 Estrutura de Pastas
 Projeto21/
-├── Projeto21.c        # Código fonte
-├── build/             # Binários e objetos
-└── README.md          # Esta documentação
-5. Instruções de Uso
-Compilar: gcc -o monitor Projeto21.c
+├── Projeto21.c        # Código-fonte principal
+├── build/             # Binários e objetos gerados
+└── README.md          # Documentação do projeto
 
-Executar: ./monitor
+6. 🚀 Instruções de Uso
+ Interagir
+#    - Informe a sigla do estado (ex: SP)
+#    - Informe a hora (0–23)
+#    - Insira os valores de PM10, NO2 e CO2
+#    - Veja alertas, gráficos e repita conforme desejar
 
-Interagir: insira sigla, hora e valores; visualize resultados e repita conforme desejado.
