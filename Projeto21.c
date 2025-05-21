@@ -4,9 +4,7 @@
 int main() {
     setlocale(LC_ALL, "Portuguese");
 
-    // --------------------------------------------------
     // Constantes de limite para os poluentes
-    // --------------------------------------------------
     const float LIM_PM10_MAX   = 200.0f;
     const float LIM_NO2_MAX    = 200.0f;
     const float LIM_CO2_MAX    = 2000.0f;
@@ -14,26 +12,20 @@ int main() {
     const float AL_PM10_VM     = 150.0f;
     const float AL_NO2_AM      = 100.0f;
     const float AL_NO2_VM      = 200.0f;
-    const float AL_CO2_ALERTA  =1000.0f;
+    const float AL_CO2_ALERTA  = 1000.0f;
 
-    // --------------------------------------------------
     // Variáveis de entrada e controle
-    // --------------------------------------------------
-    char  e1, e2;       // duas letras da sigla do estado
-    int   hora;         // 0–23
+    char  e1, e2;
+    int   hora;
     float pm10, no2, co2;
     int   blocos, i;
-    char  repetir;      // S/N para nova análise
+    char  repetir;
 
-    // --------------------------------------------------
-    // Loop principal (repete enquanto repetir == 'S' ou 's')
-    // --------------------------------------------------
+    // Loop principal
     do {
-        // --- validação da sigla do estado ---
+        // Validação da sigla do estado (mantido igual)
         printf("> UFRB - Universidade Ferderal do Reconcavo da Bahia\n> (BES) Disciplina de Programação de Computadores\n> Docs.: LEANDRO BRITO SANTOS & IURI SANTOS SOUZA , dsc.:Alando Matheus, Davi Borges.\n> Projeto21 v.1.0\nInforme a sigla do estado (2 letras, ex: SP): ");
         scanf(" %c%c", &e1, &e2);
-        // forçar maiúsculas caso queira, mas aqui assumimos entrada correta
-        // valida usando while e switch
         int sigla_valida = 0;
         while (!sigla_valida) {
             switch (e1) {
@@ -72,7 +64,7 @@ int main() {
         }
 
         // --- hora da coleta ---
-        printf("Informe a hora da coleta (0–23): ");
+        printf("Informe a hora da coleta (Utilize os valores inteiros de 0–23): ");
         scanf("%d", &hora);
         while (hora < 0 || hora > 23) {
             printf("Hora inválida! Digite novamente (0–23): ");
@@ -152,6 +144,29 @@ int main() {
         i = 0;
         while (i++ < blocos) printf("#");
         printf("\n");
+
+        // ==================================================
+        // Sugestões de Ações Mitigatórias
+        // ==================================================
+        printf("\n=== Sugestões de Ações Mitigatórias ===\n");
+        int acoes_necessarias = 0;
+
+        if (pm10 > AL_PM10_AM) {
+            printf("- Controle de emissões industriais e umidificação de vias\n");
+            acoes_necessarias++;
+        }
+        if (no2 > AL_NO2_AM) {
+            printf("- Inspeção veicular obrigatória e incentivo a bicicletas\n");
+            acoes_necessarias++;
+        }
+        if (co2 > AL_CO2_ALERTA) {
+            printf("- Reflorestamento urbano e taxação de combustíveis fósseis\n");
+            acoes_necessarias++;
+        }
+
+        if (acoes_necessarias == 0) {
+            printf("Nenhuma ação urgente requerida. Mantenha o monitoramento.\n");
+        }
 
         // --------------------------------------------------
         // Pergunta de repetição
