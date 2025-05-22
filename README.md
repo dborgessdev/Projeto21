@@ -47,7 +47,8 @@ Ferramenta em C que:
 Simplicidade: Único ponto de entrada (main()), sem dependências externas.
 
 4. 📂 Estrutura de Pastas
-Projeto21/
+
+    Projeto21/
 
     ├── Projeto21.c        # Código-fonte principal
 
