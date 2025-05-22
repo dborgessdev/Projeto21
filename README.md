@@ -49,7 +49,9 @@ Simplicidade: Único ponto de entrada (main()), sem dependências externas.
 4. 📂 Estrutura de Pastas
 Projeto21/
 ├── Projeto21.c        # Código-fonte principal
+
 ├── build/             # Binários e objetos gerados
+
 └── README.md          # Documentação do projeto
 
 6. 🚀 Instruções de Uso
